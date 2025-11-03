@@ -1,6 +1,6 @@
 const dateNowFormattedET = function(){
 	let timeNow = new Date();
-	const monthNamesET = ["jaanuar", "veebruar", "mÃ¤rts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
+	const monthNamesET = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
 	return timeNow.getDate() + ". " + monthNamesET[timeNow.getMonth()] + " " + timeNow.getFullYear();
 }
 
@@ -11,7 +11,7 @@ const timeNowFormattedET = function(){
 
 const weekDayNowET = function(){
 	let timeNow = new Date();
-	const weekdayNamesEt = ["pÃ¼hapÃ¤ev", "esmaspÃ¤ev", "teisipÃ¤ev", "kolmapÃ¤ev", "neljapÃ¤ev", "reede", "laupÃ¤ev"];
+	const weekdayNamesEt = ["pühapäev", "esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev"];
 	return weekdayNamesEt[timeNow.getDay()];
 }
 

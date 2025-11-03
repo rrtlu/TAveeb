@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <title>rr, veevbiprogrammeerimine</title>
+  </head>
+<body>
+	<hr>
+	<ul>
+		<li><a href="/">Avaleht</a><li>
+	</ul>
+	<hr>
+	<h2>Lae üles galeriifoto</h2>
+	<form method="POST" enctype="multipart/form-data">
+		<label for="photoInput">Vali soovitud pildifail:</label>
+		<input id="photoInput" name="photoInput" type="file">
+		<br>
+		<label for="altInput">Pildi alternatiivtekst: </label>
+
+		<input id="altInput" name="altInput" type="text" placeholder="sellel pildil on ...">
+		
+		<br>
+		<input id="privacyInput" name="privacyInput" type="radio" value="1" checked>
+		<label for="privacyInput">Privaatne</label>
+		
+		<br>
+		<input id="privacyInput2" name="privacyInput" type="radio" value="2">
+		<label for="privacyInput2">sisseloginud kasutajatele</label>
+		
+		<br>
+		<input id="privacyInput3" name="privacyInput" type="radio" value="3">
+		<label for="privacyInput3">avalik</label>
+		<br>
+		<input type="submit" id="photoSubmit" name="photoSubmit" value="Lae foto üles">
+	</form>
+</body>
+</html>

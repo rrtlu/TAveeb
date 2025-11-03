@@ -1,5 +1,5 @@
 const mysql =require("mysql2/promise");
-const dbInfo = require("../../../../vp2025config");
+const dbInfo = require("../../../vp2025config");
 
 //database connection
 const dbConf = {

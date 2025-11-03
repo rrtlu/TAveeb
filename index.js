@@ -5,7 +5,7 @@ const bodyparser = require("body-parser");
 //SQL andmebaasi moodul
 const mysql =require("mysql2/promise");
 const dateEt = require("./src/dateTimeET");
-const dbInfo = require("../../../vp2025config");
+const dbInfo = require("../../vp2025config");
 const textRef = "public/txt/vanasonad.txt";
 //kÃ¤ivitan express.js funktsiooni ja annan talle nimeks "app"
 const app = express();
@@ -13,8 +13,8 @@ const app = express();
 app.set("view engine", "ejs");
 //mÃ¤Ã¤ran Ã¼he pÃ¤ris kataloogi avalikult kÃ¤ttesaadavaks
 app.use(express.static("public"));
-//parsime pÃ¤ringu URL-i, lipp false, kui ainult tekst ja true, kui muid andmeid ka
-app.use(bodyparser.urlencoded({extended: false}));
+//parsime pÃ¤ringu URL-i, lipp false, kui ainult tekst ja ..... true, kui muid andmeid ka
+app.use(bodyparser.urlencoded({extended: true}));
 
 
 
@@ -90,5 +90,9 @@ app.get("/visitlog", (req, res)=>{
 //eesti filmi marsuudid
 const eestifilmRouter = require("./routes/eestifilmRoutes");
 app.use("/Eestifilm", eestifilmRouter);
+
+//galerii fotode üleslaadimine
+const photoupRouter = require("./routes/photoupRoutes");
+app.use("/galleryphotoupload", photoupRouter);
 
 app.listen(5110);
