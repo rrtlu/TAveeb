@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+	<meta charset="utf-8">
+	<title>RR, veevbiprogrammeerimine</title>
+	<link rel="stylesheet" href="/style/gallery.css">
+	<script src="/script/gallery.js" defer ></script>
+	
+</head>
+<body>
+	<img src="images/vp_banner_2025_TA.jpg" alt="kursuse bänner">
+	<h1>RR, veebiprogrammeerimine</h1>
+	<p>See leht on loodud veebiprogrammeerimise kursusel <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> ning ei sislda tõsiseltvõetavat sisu!</p>
+	<hr>
+	<ul>
+		<li><a href="/">Avaleht</a></li>
+	</ul>
+	<hr>
+	<!-- Diaoogi aken normaalsuuruses fotode näitamiseks-->
+	<dialog id="modal" class="modalarea">
+		<span id="modalClose" class="modalClose"> &times; </span>
+		<div class="modalhorizsontal">
+			<div class="modalvertical">
+				<p id="modalCaption"></p>
+				<img id="modalImage" src="/image/empty.png" alt="galeriipilt">
+			</div>
+		</div>
+	</dialog>
+	<h2>Fotogalerii</h2>
+	<div id="gallery" class="gallery">
+		<% galleryData.forEach(function(image){ %>
+			<img src="<%=imagehref%><%=image.src%>" alt="<%=image.alt%>" class="thumbs" data-filename="<%=image.src%>">
+		<% }); %>
+	</div>
+</body>
+</html>

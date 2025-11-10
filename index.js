@@ -17,6 +17,39 @@ app.use(express.static("public"));
 app.use(bodyparser.urlencoded({extended: true}));
 
 
+const dbConf = {
+	host: dbInfo.configData.host,
+	user: dbInfo.configData.user,
+	password: dbInfo.configData.passWord,
+	database: dbInfo.configData.dataBase
+};
+
+app.get("/", async (req, res)=>{
+	let conn;
+	try {
+		conn = await mysql.createConnection(dbConf);
+		let sqlReq = "SELECT filename, alttext FROM ririVP WHERE id=(SELECT MAX(id) FROM ririVP WHERE privacy=? AND deleted IS NULL)";
+		const privacy = 3;
+		const [rows, fields] = await conn.execute(sqlReq, [privacy]);
+		console.log(rows);
+		let imgAlt = "Avalik foto";
+		if(rows[0].alttext != ""){
+			imgAlt = rows[0].alttext;
+		}
+		res.render("index", {imgFile: "gallery/normal/" + rows[0].filename, imgAlt: imgAlt});
+	}
+	catch(err){
+		console.log(err);
+		//res.render("index");
+		res.render("index", {imgFile: "images/otsin_pilte.jpg", imgAlt: "Tunnen end, kui pilti otsiv lammas ..."});
+	}
+	finally {
+		if(conn){
+			await conn.end();
+			console.log("Andmebaasiühendus suletud!");
+		}
+	}
+});
 
 app.get("/", (req, res)=>{
 	//res.send("Express.js lÃ¤ks kÃ¤ima ja serveerib veebi!");
@@ -94,5 +127,9 @@ app.use("/Eestifilm", eestifilmRouter);
 //galerii fotode üleslaadimine
 const photoupRouter = require("./routes/photoupRoutes");
 app.use("/galleryphotoupload", photoupRouter);
+
+//Galerii marsruudid
+const galleryRouter = require("./routes/galleryRoutes");
+app.use("/photogallery", galleryRouter);
 
 app.listen(5110);
