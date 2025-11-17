@@ -54,7 +54,7 @@ const photouploadPagePost = async (req, res)=>{
 		//loon thumbnail pildi 100X100
 		await sharp(req.file.destination + fileName).resize(100,100).jpeg({quality: 90}).toFile("./public/gallery/thumbs/" + fileName);
 		conn = await mysql.createConnection(dbConf);
-		let sqlReq = "INSERT INTO galleryphotos_ta (filename, origname, alttext, privacy, userid) VALUES(?,?,?,?,?)";
+		let sqlReq = "INSERT INTO ririVP (filename, origname, alttext, privacy, userid) VALUES(?,?,?,?,?)";
 		//kuna kasutajakontosid veel ei ole, siis mÃ¤Ã¤rame userid = 1
 		const userId = 1;
 		const [result] = await conn.execute(sqlReq, [fileName, req.file.originalname, req.body.altInput, req.body.privacyInput, userId]);

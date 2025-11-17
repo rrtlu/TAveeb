@@ -8,7 +8,7 @@
 	
 </head>
 <body>
-	<img src="images/vp_banner_2025_TA.jpg" alt="kursuse bänner">
+	<img src="/images/vp_banner_2025_TA.jpg" alt="kursuse bänner">
 	<h1>RR, veebiprogrammeerimine</h1>
 	<p>See leht on loodud veebiprogrammeerimise kursusel <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> ning ei sislda tõsiseltvõetavat sisu!</p>
 	<hr>
@@ -27,6 +27,7 @@
 		</div>
 	</dialog>
 	<h2>Fotogalerii</h2>
+	<p><%- links %></p>
 	<div id="gallery" class="gallery">
 		<% galleryData.forEach(function(image){ %>
 			<img src="<%=imagehref%><%=image.src%>" alt="<%=image.alt%>" class="thumbs" data-filename="<%=image.src%>">
